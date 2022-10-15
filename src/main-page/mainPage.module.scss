@@ -14,8 +14,8 @@
 
 .map {
   display: grid;
-  grid-template-columns: repeat(10, 50px);
-  grid-template-rows: repeat(5, 100px);
+  grid-template-columns: repeat(10, 80px);
+  grid-template-rows: repeat(5, 170px);
   grid-template-areas:
     ". . hex0 hex0 hex1 hex1 hex2 hex2 . ."
     ". hex3 hex3 hex4 hex4 hex5 hex5 hex6 hex6 ."
@@ -26,12 +26,12 @@
 
 .button {
   margin-top: 50px;
-  width: 200px;
-  height: 50px;
+  width: 250px;
+  height: 70px;
   background-color: #000;
   border: none;
   border-radius: 10px;
-  font-size: 1.15em;
+  font-size: 1.5em;
   color: #fff;
   cursor: pointer;
   transition: transform 0.8s ease;
