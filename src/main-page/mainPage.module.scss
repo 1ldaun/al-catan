@@ -1,0 +1,41 @@
+.wrapper {
+  min-width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(
+    109.6deg,
+    rgba(156, 252, 248, 1) 11.2%,
+    rgba(110, 123, 251, 1) 91.1%
+  );
+}
+
+.map {
+  display: grid;
+  grid-template-columns: repeat(10, 50px);
+  grid-template-rows: repeat(5, 100px);
+  grid-template-areas:
+    ". . hex0 hex0 hex1 hex1 hex2 hex2 . ."
+    ". hex3 hex3 hex4 hex4 hex5 hex5 hex6 hex6 ."
+    "hex7 hex7 hex8 hex8 hex9 hex9 hex10 hex10 hex11 hex11"
+    ". hex12 hex12 hex13 hex13 hex14 hex14 hex15 hex15 ."
+    ". . hex16 hex16 hex17 hex17 hex18 hex18 . .";
+}
+
+.button {
+  margin-top: 50px;
+  width: 200px;
+  height: 50px;
+  background-color: #000;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.15em;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.8s ease;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
