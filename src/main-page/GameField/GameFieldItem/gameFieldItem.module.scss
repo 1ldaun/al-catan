@@ -1,0 +1,34 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 50px;
+  border-radius: 30px;
+  border: 1px solid black;
+  margin-bottom: 20px;
+  padding: 10px 30px;
+  font-size: 30px;
+}
+
+.dice {
+  font-weight: bold;
+}
+
+.eventCube {
+
+}
+
+.numberTable {
+  font-size: 22px;
+  border: 1px solid #000;
+  &>tr>td, &>tr>th {
+    width: 32px;
+    border: 1px solid #000;
+  }
+}
+
+.message {
+  padding: 0 10px;
+  width: 300px;
+}
