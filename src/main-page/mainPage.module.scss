@@ -24,33 +24,33 @@
 
 .map {
   display: grid;
-  grid-template-columns: repeat(10, 80px);
-  grid-template-rows: repeat(5, 170px);
+  grid-template-columns: repeat(10, 40px);
+  grid-template-rows: repeat(5, 90px);
   grid-template-areas:
     ". . hex0 hex0 hex1 hex1 hex2 hex2 . ."
     ". hex3 hex3 hex4 hex4 hex5 hex5 hex6 hex6 ."
     "hex7 hex7 hex8 hex8 hex9 hex9 hex10 hex10 hex11 hex11"
     ". hex12 hex12 hex13 hex13 hex14 hex14 hex15 hex15 ."
     ". . hex16 hex16 hex17 hex17 hex18 hex18 . .";
-  margin-top: -150px;
+  margin-top: -50px;
 }
 
 .button {
   margin-top: 40px;
-  width: 250px;
-  height: 70px;
+  width: 180px;
+  height: 40px;
   background-color: #000;
   border: none;
   border-radius: 10px;
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: #fff;
   cursor: pointer;
   transition: transform 0.8s ease;
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
   &__first{
-    margin-top: -40px;
+    margin-top: -30px;
   }
 }
 
