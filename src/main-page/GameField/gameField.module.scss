@@ -25,18 +25,6 @@
     left: calc(50% - 125px);
   }
 
-  .img {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 50px;
-    cursor: pointer;
-    transition: width 0.4s;
-    &:hover {
-      width: 53px;
-    }
-  }
-
   &::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -50,6 +38,18 @@
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.2);
+  }
+}
+
+.img {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  cursor: pointer;
+  transition: width 0.4s;
+  &:hover {
+    width: 53px;
   }
 }
 
@@ -94,11 +94,26 @@
 @media only screen and (max-width: 768px) {
   .game {
     width: 100%;
+    height: calc(100% - 120px);
     overflow-y: scroll;
-    padding: 100px;
+    padding: 10px 5px;
     background-color: white;
     border: 4px solid black;
     border-radius: 4px;
-    position: relative;
+
+    &__button {
+      bottom: 15px;
+      left: calc(50% - 100px);
+    }
+  }
+
+  .img {
+    width: 30px;
+  }
+
+  .button {
+    height: 35px;
+    width: 200px;
+    font-size: 16px;
   }
 }

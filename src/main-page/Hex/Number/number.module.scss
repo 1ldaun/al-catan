@@ -10,3 +10,25 @@
   left: 35px;
   text-align: center;
 }
+
+@media only screen and (max-width: 768px) {
+  .number {
+    padding: 1px 2px 0 1px;
+    font-size: 0.9em;
+    width: 20px;
+    height: 20px;
+    top: 18px;
+    left: 20px;
+  }
+}
+
+@media only screen and (max-width: 413px) {
+  .number {
+    padding: 0 1px 1px 1px;
+    font-size: 0.9em;
+    width: 18px;
+    height: 18px;
+    top: 15px;
+    left: 16px;
+  }
+}
