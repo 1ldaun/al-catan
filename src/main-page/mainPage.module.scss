@@ -33,12 +33,17 @@
     ". hex12 hex12 hex13 hex13 hex14 hex14 hex15 hex15 ."
     ". . hex16 hex16 hex17 hex17 hex18 hex18 . .";
   margin-top: -50px;
+  background: url("../../public/img/gameBackground.png") no-repeat;
+  background-size: 800px 635px;
+  background-position-y: 20px;
+  padding: 0 102px;
 }
 
 .buttonsWrapper {
   display: flex;
   align-items: center;
   height: 50px;
+  margin-top: 20px;
 }
 
 .button {
