@@ -26,7 +26,7 @@ const GameField: React.FC<IGameField> = ({ closeField, id }) => {
         setGameSteps([
           ...gameSteps,
           {
-            Dice: Math.round(randNumber * 100) % 12,
+            Dice: Math.round(randNumber * 100) % 12 + 1,
             EventCube:
               randNumber < 0.25
                 ? "green"
@@ -35,7 +35,7 @@ const GameField: React.FC<IGameField> = ({ closeField, id }) => {
                 : randNumber < 0.75
                 ? "yellow"
                 : "warrior",
-            RedCube: 0,
+            RedCube: Math.round(randNumber * 100) % 6 + 1,
             InfoAboutWarriors: "service is currently unavailable",
             NumberToCount: {
               "2": 1,
