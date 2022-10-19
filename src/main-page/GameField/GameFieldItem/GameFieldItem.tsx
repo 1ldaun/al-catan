@@ -11,6 +11,8 @@ const GameFieldItem: React.FC<GameStep> = ({
 }) => {
   let [numberArray, setNumberArray] = useState<number[]>([]);
 
+  const colorPalette = {}
+
   useEffect(() => {
     let buffer: any[] = [];
     for (const [value] of Object.entries(NumberToCount)) {
