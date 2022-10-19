@@ -18,13 +18,19 @@
   }
 }
 
-.dice {
+.dice, .eventCube, .redCube {
   font-weight: bold;
 }
 
 .explanation{
   font-weight: normal;
   font-size: 20px;
+}
+
+.img{
+  width: 28px;
+  height: 28px;
+  margin-top: 5px;
 }
 
 .numberTable {

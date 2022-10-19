@@ -29,9 +29,21 @@ const GameFieldItem: React.FC<GameStep> = ({
 
   return (
     <div className={styles.card} style={{ backgroundColor: colorPalette[EventCube as keyof typeof colorPalette] }}>
-      <p className={styles.dice}><span className={styles.explanation}>Сумма на кубиках:</span> {Dice}</p>
-      <p className={styles.eventCube}><span className={styles.explanation}>Событие:</span> {EventCube}</p>
-      <p className={styles.redCube}><span className={styles.explanation}>Красный кубик:</span> {RedCube}</p>
+      <div className={styles.dice}>
+        <img className={styles.img} src="/img/cubes.png" alt="?"/>
+        <span className={styles.explanation}> Сумма на кубиках: </span>
+        {Dice}
+      </div>
+      <div className={styles.eventCube}>
+        <img className={styles.img} src="/img/event.png" alt="?"/>
+        <span className={styles.explanation}> Событие: </span>
+        {EventCube}
+      </div>
+      <div className={styles.redCube}>
+        <img className={styles.img} src="/img/red-cube.png" alt="?"/>
+        <span className={styles.explanation}> Красный кубик: </span>
+        {RedCube}
+      </div>
       <table className={styles.numberTable}>
         <tr>
           {numberArray.map((number, index) => {

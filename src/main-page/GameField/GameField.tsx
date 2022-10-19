@@ -68,7 +68,7 @@ const GameField: React.FC<IGameField> = ({ closeField, id }) => {
           className={styles.img}
           src="/img/remove.png"
           alt={"close pop-up"}
-          title={"close pop-up"}
+          title={"Закрыть"}
           onClick={() => stopGame()}
         />
         {gameSteps.map((it) => (
