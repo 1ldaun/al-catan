@@ -46,7 +46,7 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) or (max-height: 700px) {
   .card {
     padding: 10px 5px;
     flex-direction: column;

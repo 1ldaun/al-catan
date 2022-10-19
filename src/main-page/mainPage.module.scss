@@ -62,7 +62,7 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) or (max-height: 700px) {
   .map {
     grid-template-columns: repeat(10, 30px);
     grid-template-rows: repeat(5, 80px);
