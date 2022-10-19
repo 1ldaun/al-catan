@@ -5,6 +5,7 @@ import styles from "./mainPage.module.scss";
 import axios from "axios";
 import mapDefault from "../data/mapDefault";
 import GameField from "./GameField/GameField";
+import shuffle from "../assets/shuffle";
 
 const MainPage = () => {
   const [map, setMap] = useState(mapDefault);
@@ -15,7 +16,7 @@ const MainPage = () => {
       .get("https://snapiproof.pagekite.me/catan")
       .then((response) => setMap(response.data))
       .catch(() => {
-        setMap(mapDefault);
+        setMap(shuffle(mapDefault));
       });
     setId(Math.round(Math.random() * 100));
   };

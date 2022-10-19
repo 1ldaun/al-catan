@@ -22,13 +22,21 @@ const GameField: React.FC<IGameField> = ({ closeField, id }) => {
         setGameSteps([...gameSteps, response.data]);
       })
       .catch(() => {
+        let randNumber = Math.random();
         setGameSteps([
           ...gameSteps,
           {
-            Dice: 0,
-            EventCube: "undef",
+            Dice: Math.round(randNumber * 100) % 12,
+            EventCube:
+              randNumber < 0.25
+                ? "green"
+                : randNumber >= 0.25 && randNumber < 0.5
+                ? "blue"
+                : randNumber < 0.75
+                ? "yellow"
+                : "warrior",
             RedCube: 0,
-            InfoAboutWarriors: "Internal server error aaaaaaaaa aaaa aaaaa",
+            InfoAboutWarriors: "service is currently unavailable",
             NumberToCount: {
               "2": 1,
               "3": 10,
