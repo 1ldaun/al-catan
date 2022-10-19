@@ -6,6 +6,7 @@ import axios from "axios";
 import mapDefault from "../data/mapDefault";
 import GameField from "./GameField/GameField";
 import shuffle from "../assets/shuffle";
+import cx from "classnames";
 
 const MainPage = () => {
   const [map, setMap] = useState(mapDefault);
@@ -25,7 +26,7 @@ const MainPage = () => {
 
   return (
     <div className={styles.main}>
-      <div className={styles.wrapper}>
+      <div className={cx(styles.wrapper, game && styles.wrapper__opacity)}>
         <div className={styles.map}>
           {map.map((item: HexInterface): any => {
             return <Hex type={item.type} id={item.id} number={item.number} />;

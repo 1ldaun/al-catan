@@ -11,7 +11,12 @@ const GameFieldItem: React.FC<GameStep> = ({
 }) => {
   let [numberArray, setNumberArray] = useState<number[]>([]);
 
-  const colorPalette = {}
+  const colorPalette = {
+    yellow: "#f9ff78",
+    blue: "#44BCF3",
+    green: "#73fa5f",
+    warrior: "#e8e5e5"
+  }
 
   useEffect(() => {
     let buffer: any[] = [];
@@ -23,7 +28,7 @@ const GameFieldItem: React.FC<GameStep> = ({
   }, []);
 
   return (
-    <div className={styles.card} style={{ backgroundColor: EventCube }}>
+    <div className={styles.card} style={{ backgroundColor: colorPalette[EventCube as keyof typeof colorPalette] }}>
       <p className={styles.dice}><span className={styles.explanation}>Сумма на кубиках:</span> {Dice}</p>
       <p className={styles.eventCube}><span className={styles.explanation}>Событие:</span> {EventCube}</p>
       <p className={styles.redCube}><span className={styles.explanation}>Красный кубик:</span> {RedCube}</p>
