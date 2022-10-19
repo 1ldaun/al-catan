@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./gameField.module.scss";
 import axios from "axios";
 import { GameStep } from "../../interfaces/game-step.interface";
@@ -13,6 +13,7 @@ interface IGameField {
 const GameField: React.FC<IGameField> = ({ closeField, id }) => {
   const [gameSteps, setGameSteps] = useState<GameStep[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+
   const doStep = () => {
     setIsLoading(true);
     setTimeout(() => {}, 1000);
@@ -61,6 +62,20 @@ const GameField: React.FC<IGameField> = ({ closeField, id }) => {
     closeField(false);
   };
 
+  const keyCLick = (e: KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " "){
+      doStep();
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("keydown", keyCLick)
+
+    return function cleanup () {
+      window.removeEventListener('keydown', keyCLick);
+    }
+  })
+
   return (
     <div className={styles.gameWrapper}>
       <div className={styles.game}>
@@ -80,6 +95,7 @@ const GameField: React.FC<IGameField> = ({ closeField, id }) => {
             className={styles.button}
             onClick={() => doStep()}
           >
+            <div></div>
             Сделать ход
             <div
               className={styles.spinner}
