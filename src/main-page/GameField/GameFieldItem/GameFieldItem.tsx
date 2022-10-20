@@ -30,7 +30,10 @@ const GameFieldItem: React.FC<GameStep> = ({
 
   return (
     <div className={styles.card} style={
-      { background: InfoAboutWarriors === "Варвары пришли!" ? colorPalette.warriorsCame : colorPalette[EventCube as keyof typeof colorPalette] }}>
+      { background: InfoAboutWarriors === "Варвары пришли!" ?
+          colorPalette.warriorsCame :
+          colorPalette[EventCube as keyof typeof colorPalette] }
+    }>
       <div className={styles.dice}>
         <img className={styles.img} src="/img/cubes.png" alt="?"/>
         <span className={styles.explanation}> Сумма на кубиках: </span>
