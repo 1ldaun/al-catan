@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useLayoutEffect, useRef, useState} from "react";
 import styles from "./gameField.module.scss";
 import axios from "axios";
 import { GameStep } from "../../interfaces/game-step.interface";
@@ -13,6 +13,7 @@ interface IGameField {
 const GameField: React.FC<IGameField> = ({ closeField, id }) => {
   const [gameSteps, setGameSteps] = useState<GameStep[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const myRef = useRef<null | HTMLDivElement>(null);
 
   const doStep = () => {
     setIsLoading(true);
@@ -69,7 +70,8 @@ const GameField: React.FC<IGameField> = ({ closeField, id }) => {
   }
 
   useEffect(() => {
-    window.addEventListener("keydown", keyCLick)
+    window.addEventListener("keydown", keyCLick);
+    myRef!.current!.scrollIntoView({behavior: "smooth"});
 
     return function cleanup () {
       window.removeEventListener('keydown', keyCLick);
@@ -87,15 +89,15 @@ const GameField: React.FC<IGameField> = ({ closeField, id }) => {
           onClick={() => stopGame()}
         />
         {gameSteps.map((it) => (
-          <GameFieldItem {...it} />
+          <GameFieldItem {...it}/>
         ))}
+        <div ref={myRef}></div>
         <div className={styles.game__button}>
           <button
             disabled={isLoading}
             className={styles.button}
             onClick={() => doStep()}
           >
-            <div></div>
             Сделать ход
             <div
               className={styles.spinner}
