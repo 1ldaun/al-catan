@@ -13,6 +13,7 @@ const MainPage = () => {
   const [id, setId] = useState(0);
   const [game, setGame] = useState(false);
   const [newGame, setNewGame] = useState(true)
+  const [firstStart, setFirstStart] = useState(true)
   const getMap = () => {
     axios
       .get("https://snapiproof.pagekite.me/catan")
@@ -37,21 +38,24 @@ const MainPage = () => {
           <button className={styles.button} onClick={() => getMap()}>
             Сгенерировать
           </button>
-          {newGame ?
+          {firstStart ?
             <button className={styles.button} onClick={() => {
               setGame(true);
-              setNewGame(false);
+              setNewGame(true);
+              setFirstStart(false);
             }}>
               Начать игру
             </button> :
             <div className={styles.newGameButtons}>
               <button className={styles.newGameButtons__button} onClick={() => {
                 setGame(true);
+                setNewGame(false)
               }}>
                 Продолжить игру
               </button>
               <button className={styles.newGameButtons__button} onClick={() => {
                 setGame(true);
+                setNewGame(true);
               }
               }>
                 Начать новую игру
@@ -60,7 +64,7 @@ const MainPage = () => {
           }
         </div>
       </div>
-      {game && <GameField closeField={setGame} id={id} newGame={newGame}/>}
+      {game && <GameField setId={setId} closeField={setGame} id={id} newGame={newGame}/>}
     </div>
   );
 };

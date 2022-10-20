@@ -8,13 +8,19 @@ interface IGameField {
   className?: string;
   closeField: (defaultValue: boolean) => void;
   id: number;
+  setId: (id: number) => void;
   newGame: boolean;
 }
 
-const GameField: React.FC<IGameField> = ({ closeField, id , newGame}) => {
+const GameField: React.FC<IGameField> = ({ closeField, id , newGame, setId}) => {
   const [gameSteps, setGameSteps] = useState<GameStep[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const myRef = useRef<null | HTMLDivElement>(null);
+
+  const startNewGame = () => {
+    setId(id + 1);
+    setGameSteps([]);
+  }
 
   const doStep = () => {
     setIsLoading(true);
@@ -69,6 +75,10 @@ const GameField: React.FC<IGameField> = ({ closeField, id , newGame}) => {
       doStep();
     }
   }
+
+  useEffect(() => {
+    newGame && startNewGame()
+  }, [])
 
   useEffect(() => {
     window.addEventListener("keydown", keyCLick);

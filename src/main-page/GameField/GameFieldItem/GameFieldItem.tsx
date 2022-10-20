@@ -15,7 +15,8 @@ const GameFieldItem: React.FC<GameStep> = ({
     yellow: "#f9ff78",
     blue: "#44BCF3",
     green: "#73fa5f",
-    warrior: "#e8e5e5"
+    warrior: "#e8e5e5",
+    warriorsCame: "#e85555"
   }
 
   useEffect(() => {
@@ -28,7 +29,8 @@ const GameFieldItem: React.FC<GameStep> = ({
   }, []);
 
   return (
-    <div className={styles.card} style={{ backgroundColor: colorPalette[EventCube as keyof typeof colorPalette] }}>
+    <div className={styles.card} style={
+      { background: InfoAboutWarriors === "Варвары пришли!" ? colorPalette.warriorsCame : colorPalette[EventCube as keyof typeof colorPalette] }}>
       <div className={styles.dice}>
         <img className={styles.img} src="/img/cubes.png" alt="?"/>
         <span className={styles.explanation}> Сумма на кубиках: </span>
