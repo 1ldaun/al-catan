@@ -8,9 +8,10 @@ interface IGameField {
   className?: string;
   closeField: (defaultValue: boolean) => void;
   id: number;
+  newGame: boolean;
 }
 
-const GameField: React.FC<IGameField> = ({ closeField, id }) => {
+const GameField: React.FC<IGameField> = ({ closeField, id , newGame}) => {
   const [gameSteps, setGameSteps] = useState<GameStep[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const myRef = useRef<null | HTMLDivElement>(null);
@@ -85,7 +86,7 @@ const GameField: React.FC<IGameField> = ({ closeField, id }) => {
           className={styles.img}
           src="/img/remove.png"
           alt={"close pop-up"}
-          title={"Закрыть"}
+          title={"Закрыть окно"}
           onClick={() => stopGame()}
         />
         {gameSteps.map((it) => (
