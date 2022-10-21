@@ -14,6 +14,7 @@ const MainPage = () => {
   const [game, setGame] = useState(false);
   const [newGame, setNewGame] = useState(true)
   const [firstStart, setFirstStart] = useState(true)
+
   const getMap = () => {
     axios
       .get("https://snapiproof.pagekite.me/catan")
@@ -23,6 +24,35 @@ const MainPage = () => {
       });
     setId(Math.round(Math.random() * 100));
   };
+
+  const buttonsChangeSection = () => {
+    return (
+      firstStart ?
+        <button className={styles.button} onClick={() => {
+          setGame(true);
+          setNewGame(true);
+          setFirstStart(false);
+        }}>
+          Начать игру
+        </button>
+        :
+        <div className={styles.newGameButtons}>
+          <button className={styles.newGameButtons__button} onClick={() => {
+            setGame(true);
+            setNewGame(false)
+          }}>
+            Продолжить игру
+          </button>
+          <button className={styles.newGameButtons__button} onClick={() => {
+            setGame(true);
+            setNewGame(true);
+          }
+          }>
+            Начать новую игру
+          </button>
+        </div>
+    )
+  }
 
   useEffect(getMap, []);
 
@@ -38,30 +68,7 @@ const MainPage = () => {
           <button className={styles.button} onClick={() => getMap()}>
             Сгенерировать
           </button>
-          {firstStart ?
-            <button className={styles.button} onClick={() => {
-              setGame(true);
-              setNewGame(true);
-              setFirstStart(false);
-            }}>
-              Начать игру
-            </button> :
-            <div className={styles.newGameButtons}>
-              <button className={styles.newGameButtons__button} onClick={() => {
-                setGame(true);
-                setNewGame(false)
-              }}>
-                Продолжить игру
-              </button>
-              <button className={styles.newGameButtons__button} onClick={() => {
-                setGame(true);
-                setNewGame(true);
-              }
-              }>
-                Начать новую игру
-              </button>
-            </div>
-          }
+          {buttonsChangeSection()}
         </div>
       </div>
       {game && <GameField setId={setId} closeField={setGame} id={id} newGame={newGame}/>}

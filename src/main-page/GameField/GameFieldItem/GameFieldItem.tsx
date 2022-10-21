@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { GameStep } from "../../../interfaces/game-step.interface";
 import styles from "./gameFieldItem.module.scss";
+import {colorPalette} from "../../../assets/colorPalette";
 
 const GameFieldItem: React.FC<GameStep> = ({
   Dice,
@@ -10,14 +11,6 @@ const GameFieldItem: React.FC<GameStep> = ({
   InfoAboutWarriors,
 }) => {
   let [numberArray, setNumberArray] = useState<number[]>([]);
-
-  const colorPalette = {
-    yellow: "#f9ff78",
-    blue: "#44BCF3",
-    green: "#73fa5f",
-    warrior: "#e8e5e5",
-    warriorsCame: "#e85555"
-  }
 
   useEffect(() => {
     let buffer: any[] = [];

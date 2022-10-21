@@ -15,7 +15,7 @@ interface IGameField {
 const GameField: React.FC<IGameField> = ({ closeField, id , newGame, setId}) => {
   const [gameSteps, setGameSteps] = useState<GameStep[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const myRef = useRef<null | HTMLDivElement>(null);
+  const scrollPoint = useRef<null | HTMLDivElement>(null);
 
   const startNewGame = () => {
     setId(id + 1);
@@ -82,7 +82,7 @@ const GameField: React.FC<IGameField> = ({ closeField, id , newGame, setId}) => 
 
   useEffect(() => {
     window.addEventListener("keydown", keyCLick);
-    myRef!.current!.scrollIntoView({behavior: "smooth"});
+    scrollPoint!.current!.scrollIntoView({behavior: "smooth"});
 
     return function cleanup () {
       window.removeEventListener('keydown', keyCLick);
@@ -102,7 +102,7 @@ const GameField: React.FC<IGameField> = ({ closeField, id , newGame, setId}) => 
         {gameSteps.map((it) => (
           <GameFieldItem {...it}/>
         ))}
-        <div ref={myRef}></div>
+        <div ref={scrollPoint}></div>
         <div className={styles.game__button}>
           <button
             disabled={isLoading}
