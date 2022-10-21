@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useLayoutEffect, useRef, useState} from "react";
 import styles from "./gameField.module.scss";
 import axios from "axios";
 import { GameStep } from "../../interfaces/game-step.interface";
@@ -8,11 +8,20 @@ interface IGameField {
   className?: string;
   closeField: (defaultValue: boolean) => void;
   id: number;
+  setId: (id: number) => void;
+  newGame: boolean;
 }
 
-const GameField: React.FC<IGameField> = ({ closeField, id }) => {
+const GameField: React.FC<IGameField> = ({ closeField, id , newGame, setId}) => {
   const [gameSteps, setGameSteps] = useState<GameStep[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const scrollPoint = useRef<null | HTMLDivElement>(null);
+
+  const startNewGame = () => {
+    setId(id + 1);
+    setGameSteps([]);
+  }
+
   const doStep = () => {
     setIsLoading(true);
     setTimeout(() => {}, 1000);
@@ -61,6 +70,25 @@ const GameField: React.FC<IGameField> = ({ closeField, id }) => {
     closeField(false);
   };
 
+  const keyCLick = (e: KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " "){
+      doStep();
+    }
+  }
+
+  useEffect(() => {
+    newGame && startNewGame()
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener("keydown", keyCLick);
+    scrollPoint!.current!.scrollIntoView({behavior: "smooth"});
+
+    return function cleanup () {
+      window.removeEventListener('keydown', keyCLick);
+    }
+  })
+
   return (
     <div className={styles.gameWrapper}>
       <div className={styles.game}>
@@ -68,12 +96,13 @@ const GameField: React.FC<IGameField> = ({ closeField, id }) => {
           className={styles.img}
           src="/img/remove.png"
           alt={"close pop-up"}
-          title={"close pop-up"}
+          title={"Закрыть окно"}
           onClick={() => stopGame()}
         />
         {gameSteps.map((it) => (
-          <GameFieldItem {...it} />
+          <GameFieldItem {...it}/>
         ))}
+        <div ref={scrollPoint}></div>
         <div className={styles.game__button}>
           <button
             disabled={isLoading}

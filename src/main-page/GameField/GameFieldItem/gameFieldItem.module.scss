@@ -18,8 +18,19 @@
   }
 }
 
-.dice {
+.dice, .eventCube, .redCube {
   font-weight: bold;
+  padding: 0 10px;
+}
+
+.explanation{
+  font-weight: normal;
+  font-size: 20px;
+}
+
+.img{
+  width: 28px;
+  height: 28px;
 }
 
 .explanation{
@@ -45,14 +56,26 @@
   width: 220px;
 }
 
-@media only screen and (max-width: 1140px) {
+@media only screen and (max-width: 1240px) {
   .message {
-    font-size: 16px;
+    font-size: 18px;
     width: 160px;
+  }
+  .dice, .eventCube, .redCube {
+    font-size: 18px;
+  }
+
+  .explanation{
+    font-size: 18px;
+  }
+
+  .img{
+    width: 22px;
+    height: 22px;
   }
 }
 
-@media (max-width: 768px) or (max-height: 700px) {
+@media (max-width: 1000px) or (max-height: 700px) {
   .card {
     padding: 10px 5px;
     flex-direction: column;
@@ -62,5 +85,19 @@
   .message {
     display: inline;
     width: 100%;
+    font-size: 20px;
+  }
+
+  .dice, .eventCube, .redCube {
+    font-size: 1em;
+  }
+
+  .explanation{
+    font-size: 20px;
+  }
+
+  .img{
+    width: 28px;
+    height: 28px;
   }
 }
